@@ -1,7 +1,6 @@
 let courses = JSON.parse(localStorage.getItem('courses')) || [];
 let enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
 
-// Function to upload a course
 document.getElementById('upload-course')?.addEventListener('click', () => {
     const title = document.getElementById('course-title').value;
     const description = document.getElementById('course-description').value;
@@ -9,7 +8,7 @@ document.getElementById('upload-course')?.addEventListener('click', () => {
     if (title && description) {
         const course = { title, description };
         courses.push(course);
-        localStorage.setItem('courses', JSON.stringify(courses)); // Save to localStorage
+        localStorage.setItem('courses', JSON.stringify(courses)); 
         document.getElementById('upload-message').innerText = 'Course uploaded successfully!';
         document.getElementById('course-title').value = '';
         document.getElementById('course-description').value = '';
@@ -18,13 +17,12 @@ document.getElementById('upload-course')?.addEventListener('click', () => {
     }
 });
 
-// Function to enroll in a course
 document.getElementById('enroll-course')?.addEventListener('click', () => {
     const selectedCourse = document.getElementById('course-select').value;
 
     if (selectedCourse) {
         enrolledCourses.push(selectedCourse);
-        localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses)); // Save to localStorage
+        localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses)); 
         document.getElementById('enroll-message').innerText = 'Enrolled successfully!';
         updateProgress();
     } else {
@@ -32,7 +30,6 @@ document.getElementById('enroll-course')?.addEventListener('click', () => {
     }
 });
 
-// Function to populate the course select dropdown
 function populateCourseSelect() {
     const courseSelect = document.getElementById('course-select');
     courseSelect.innerHTML = '';
@@ -44,7 +41,6 @@ function populateCourseSelect() {
     });
 }
 
-// Function to update progress
 function updateProgress() {
     const progressList = document.getElementById('progress-list');
     progressList.innerHTML = '';
@@ -55,7 +51,6 @@ function updateProgress() {
     });
 }
 
-// Call populateCourseSelect on page load for enroll-course.html
 if (document.getElementById('course-select')) {
     populateCourseSelect();
 }
